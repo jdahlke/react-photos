@@ -1,0 +1,28 @@
+.animated-page {
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+
+  -webkit-overflow-scrolling: touch;
+  transition: all 0.3s ease-out;
+  transition-property: opacity, left;
+  opacity: 1;
+}
+
+.animated-page-enter {
+  // left: -100%;
+  opacity: 0.6;
+}
+
+.animated-page-exit,
+.animated-page-enter-active {
+  // left: 0;
+  opacity: 1;
+}
+
+.animated-page-exit-active {
+  // left: -100%;
+  opacity: 0.6;
+}

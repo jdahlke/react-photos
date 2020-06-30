@@ -1,0 +1,51 @@
+/*
+ * Definitions
+ */
+$photos-caption-size: 1rem;
+$photos-font-light: #ccc;
+$photos-font-dark: #222;
+
+/*
+ * Imports
+ */
+@import 'animated_page';
+
+/*
+ * Styles
+ */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #333;
+}
+
+.image {
+  display: grid;
+  height: 100%;
+}
+.center-fit {
+  max-width: 100%;
+  max-height: 100vh;
+  margin: auto;
+}
+.caption {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: $photos-caption-size;
+
+  p {
+    color: $photos-font-light;
+  }
+
+  p.dark {
+    color: $photos-font-dark;
+  }
+
+  p.hide {
+    display: none;
+  }
+}

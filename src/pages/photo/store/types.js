@@ -1,0 +1,1 @@
+export const PHOTO_CONFIGURE = 'PHOTO_CONFIGURE'
