@@ -22,6 +22,19 @@ body {
   background-color: #333;
 }
 
+h1, h2, h3 {
+  margin: 10px;
+}
+
+.home {
+  .title {
+    color: #8c4623;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
 .image {
   display: grid;
   height: 100%;
@@ -39,10 +52,13 @@ body {
 
   p {
     color: $photos-font-light;
+    background-color: $photos-font-dark;
+    padding: 2px;
   }
 
   p.dark {
     color: $photos-font-dark;
+    background-color: $photos-font-light;
   }
 
   p.hide {
