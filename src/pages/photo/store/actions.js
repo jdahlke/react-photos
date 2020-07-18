@@ -1,10 +1,12 @@
 'use strict'
 
 import {
-  PHOTO_CONFIGURE
+  PHOTO_CONFIGURE,
+  PHOTO_TOGGLE_DIASHOW
 } from './types'
 
 import store from 'src/store'
+import Photos from 'src/app/photos'
 
 export function toggleCaption () {
   const configuration = store.getState().photo
@@ -26,5 +28,29 @@ export function toggleCaption () {
     options: {
       caption: caption
     }
+  }
+}
+
+
+export function toggleDiashow () {
+  const configuration = store.getState().photo
+  let diashow = configuration.diashow
+
+  if (diashow.interval) {
+    clearInterval(diashow.interval)
+    diashow.interval = null
+  } else {
+    const frequency = diashow.frequency || 10000
+
+    diashow.interval = setInterval(() => {
+      const event = document.createEvent('Event')
+      event.initEvent('photos:next', true, true)
+      document.dispatchEvent(event)
+    }, frequency)
+  }
+
+  return {
+    type: PHOTO_TOGGLE_DIASHOW,
+    diashow: diashow
   }
 }

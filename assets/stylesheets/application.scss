@@ -44,6 +44,7 @@ h1, h2, h3 {
   max-height: 100vh;
   margin: auto;
 }
+
 .caption {
   position: fixed;
   left: 50%;
@@ -63,5 +64,21 @@ h1, h2, h3 {
 
   p.hide {
     display: none;
+  }
+}
+
+.diashow {
+  position: fixed;
+  right: 1rem;
+  transform: translate(-50%, 0);
+  top: $photos-caption-size;
+  color: $photos-font-light;
+
+  span {
+    opacity: 0;
+    font-size: 2rem;
+  }
+  span:hover {
+    opacity: 1;
   }
 }

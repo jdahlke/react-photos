@@ -19,17 +19,18 @@ const Keys = {
 class Routes extends Component {
   componentDidMount () {
     document.addEventListener('keydown', this.handleKeyDown.bind(this))
+    document.addEventListener('photos:next', this.handleNextPhoto.bind(this))
   }
 
 
   componentWillUnmount () {
-    document.removeEventListener('keydown', this.handleKeyDown.bind(this))
+    document.removeEventListener('keydown')
+    document.removeEventListener('photos:next')
   }
 
   handleKeyDown (event) {
     event.preventDefault()
 
-    let id = 0
     const { history } = this.props
 
     switch (event.keyCode) {
@@ -44,6 +45,13 @@ class Routes extends Component {
       default:
         break
     }
+  }
+
+  handleNextPhoto () {
+    const { history } = this.props
+
+    Photos.next()
+    history.push({ pathname: `/photos/${Photos.position}` })
   }
 
   render () {

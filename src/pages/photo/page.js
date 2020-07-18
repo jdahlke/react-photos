@@ -4,6 +4,7 @@ import React from 'react'
 
 import { ANIMATED_PAGE_CLASS } from 'src/constants'
 import Caption from './caption'
+import DiaShow from './dia-show'
 import Photos from 'src/app/photos'
 
 const PhotoPage = (props) => {
@@ -19,9 +20,10 @@ const PhotoPage = (props) => {
   return (
     <div className={`overflow-x-hidden position-relative ${ANIMATED_PAGE_CLASS}`}>
       <div className='image'>
-        <img className='center-fit' src={photo.src.default} title={title} />
+        <img className='center-fit' src={photo.src.default} />
       </div>
       <Caption {...photo.caption} />
+      <DiaShow />
     </div>
   )
 }

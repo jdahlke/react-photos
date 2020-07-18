@@ -1,5 +1,8 @@
+'use strict'
+
 export {
-  toggleCaption
+  toggleCaption,
+  toggleDiashow
 } from './actions'
 
 export photoReducer from './reducer'
