@@ -20,7 +20,7 @@ const PhotoPage = (props) => {
   return (
     <div className={`overflow-x-hidden position-relative ${ANIMATED_PAGE_CLASS}`}>
       <div className='image'>
-        <img className='center-fit' src={photo.src.default} />
+        <img className='center-fit' src={photo.src} />
       </div>
       <Caption {...photo.caption} />
       <DiaShow />
