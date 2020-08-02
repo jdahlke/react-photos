@@ -4,9 +4,12 @@ import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
 import Routes from './routes'
+import ErrorBoundary from 'src/components/error-boundary'
 
 export const App = () => (
   <BrowserRouter>
-    <Routes />
+    <ErrorBoundary>
+      <Routes />
+    </ErrorBoundary>
   </BrowserRouter>
 )

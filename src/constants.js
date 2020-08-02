@@ -4,7 +4,8 @@ export const ANIMATED_PAGE_CLASS = 'animated-page'
 export const HISTORY_POP_ACTION = 'POP'
 export const TEXT = {
   home: {
-    title: '🎉 Happy Birthday 🎉'
+    title: 'Fotoshow',
+    choose_folder: 'Ordner mit Fotos auswählen'
   },
   diashow: {
     play: {
@@ -15,5 +16,9 @@ export const TEXT = {
       button: '⏸',
       title: 'Dia Show beenden'
     }
+  },
+  error: {
+    title: 'Sorry, something went wrong.',
+    back: 'Zurück zur Startseite'
   }
 }

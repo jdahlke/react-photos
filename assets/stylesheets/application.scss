@@ -20,13 +20,22 @@ $photos-font-dark: #222;
 
 body {
   background-color: #333;
+  color: $photos-font-light;
+}
+
+a {
+  color: $photos-font-light;
 }
 
 h1, h2, h3 {
-  margin: 10px;
+  margin: 20px;
+  text-align: center;
 }
 
 .home {
+}
+
+.cover {
   .title {
     color: #8c4623;
     position: fixed;
@@ -35,7 +44,13 @@ h1, h2, h3 {
   }
 }
 
-.image {
+.error {
+  p {
+    text-align: center;
+  }
+}
+
+.image, .upload {
   display: grid;
   height: 100%;
 }
@@ -61,10 +76,6 @@ h1, h2, h3 {
     color: $photos-font-dark;
     background-color: $photos-font-light;
   }
-
-  p.hide {
-    display: none;
-  }
 }
 
 .diashow {
@@ -81,4 +92,8 @@ h1, h2, h3 {
   span:hover {
     opacity: 1;
   }
+}
+
+.hide {
+  display: none;
 }
