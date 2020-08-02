@@ -51,19 +51,25 @@ class Photos {
 
   next () {
     const max = this.photos.length - 1
-    if (this.position == max) { return }
+    if (this.position >= max) { return false }
 
     this.position += 1
+    return true
   }
 
   previous () {
-    if (this.position == 0) { return }
+    if (this.position === 0) { return false }
 
     this.position -= 1
+    return true
   }
 
   start () {
-    this.position = -1
+    this.position = 0
+  }
+
+  isReady () {
+    return this.photos > 0 && this.cover.src
   }
 }
 

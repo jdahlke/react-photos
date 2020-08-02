@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
-import { ANIMATED_PAGE_CLASS, HISTORY_POP_ACTION } from 'src/constants'
+import { ANIMATED_PAGE_CLASS } from 'src/constants'
 import LazyLoadHOC from 'src/components/LazyLoadHOC'
 
 import CoverPage from 'src/pages/cover/page'
@@ -24,7 +24,6 @@ class Routes extends Component {
     document.addEventListener('photos:start', this.handleStart.bind(this))
   }
 
-
   componentWillUnmount () {
     document.removeEventListener('keydown')
     document.removeEventListener('photos:next')
@@ -38,13 +37,15 @@ class Routes extends Component {
 
     switch (event.keyCode) {
       case Keys.LeftArrow:
-        Photos.previous()
-        history.push({ pathname: `/photos/${Photos.position}` })
-        break;
+        if (Photos.previous()) {
+          history.push({ pathname: `/photos/${Photos.position}` })
+        }
+        break
       case Keys.RightArrow:
-        Photos.next()
-        history.push({ pathname: `/photos/${Photos.position}` })
-        break;
+        if (Photos.next()) {
+          history.push({ pathname: `/photos/${Photos.position}` })
+        }
+        break
       default:
         break
     }
@@ -53,8 +54,9 @@ class Routes extends Component {
   handleNextPhoto () {
     const { history } = this.props
 
-    Photos.next()
-    history.push({ pathname: `/photos/${Photos.position}` })
+    if (Photos.next()) {
+      history.push({ pathname: `/photos/${Photos.position}` })
+    }
   }
 
   handleStart () {
@@ -66,7 +68,7 @@ class Routes extends Component {
 
   render () {
     const { location } = this.props
-    const { animatedPage, pathname } = location
+    const { pathname } = location
 
     return (
       <TransitionGroup>
