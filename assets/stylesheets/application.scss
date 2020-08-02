@@ -44,6 +44,12 @@ h1, h2, h3 {
   }
 }
 
+.error {
+  p {
+    text-align: center;
+  }
+}
+
 .image, .upload {
   display: grid;
   height: 100%;

@@ -16,5 +16,9 @@ export const TEXT = {
       button: '⏸',
       title: 'Dia Show beenden'
     }
+  },
+  error: {
+    title: 'Sorry, something went wrong.',
+    back: 'Zurück zur Startseite'
   }
 }
