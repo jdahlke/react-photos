@@ -15,7 +15,6 @@ const PhotoPage = (props) => {
   } = props
 
   const photo = Photos.get(id)
-  const title = photo.caption.text || ''
 
   return (
     <div className={`overflow-x-hidden position-relative ${ANIMATED_PAGE_CLASS}`}>
@@ -29,4 +28,3 @@ const PhotoPage = (props) => {
 }
 
 export default PhotoPage
-

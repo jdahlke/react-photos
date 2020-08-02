@@ -4,7 +4,6 @@ import {
   PHOTO_TOGGLE_DIASHOW
 } from './types'
 
-
 const initialState = {
   caption: 'light',
   diashow: {

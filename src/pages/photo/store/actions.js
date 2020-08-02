@@ -6,7 +6,6 @@ import {
 } from './types'
 
 import store from 'src/store'
-import Photos from 'src/app/photos'
 import initEvent from 'src/lib/init-event'
 
 export function toggleCaption () {
@@ -32,10 +31,9 @@ export function toggleCaption () {
   }
 }
 
-
 export function toggleDiashow () {
   const configuration = store.getState().photo
-  let diashow = configuration.diashow
+  const diashow = configuration.diashow
 
   if (diashow.interval) {
     clearInterval(diashow.interval)

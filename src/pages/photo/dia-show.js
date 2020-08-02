@@ -17,7 +17,7 @@ const PhotoDiaShow = (props) => {
   }
 
   return (
-    <div className='diashow' onClick={() => { props.toggleDiashow(history) }}>
+    <div className='diashow' onClick={props.toggleDiashow}>
       <span title={title}>{button}</span>
     </div>
   )
