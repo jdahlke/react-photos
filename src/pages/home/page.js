@@ -1,21 +1,19 @@
 'use strict'
 
 import React, { memo } from 'react'
-import { Link } from 'react-router-dom'
 
-import { ANIMATED_PAGE_CLASS, TEXT } from 'src/constants'
-import homepageImage from 'photos/IMG_1971.jpg'
+import { TEXT } from 'src/constants'
+import importPhotoDirectory from 'src/lib/import-photo-directory'
 
 const Homepage = () => (
-  <div className={`home overflow-x-hidden position-relative ${ANIMATED_PAGE_CLASS}`}>
-    <Link to='/photos/0'>
-      <div className='title'>
-        <h1>{TEXT.home.title}</h1>
+  <div className='home'>
+    <h1>{TEXT.home.title}</h1>
+    <div className='upload'>
+      <div className='center-fit'>
+        <p>{TEXT.home.choose_folder}</p>
+        <input type='file' name='files' webkitdirectory='' multiple onChange={importPhotoDirectory} />
       </div>
-      <div className='image'>
-        <img className='center-fit' src={homepageImage} />
-      </div>
-    </Link>
+    </div>
   </div>
 )
 
