@@ -1,5 +1,6 @@
 'use strict'
 
+import isEmpty from 'is-empty'
 import React from 'react'
 
 import { ANIMATED_PAGE_CLASS } from 'src/constants'
@@ -8,6 +9,11 @@ import Photos from 'src/app/photos'
 
 const CoverPage = (props) => {
   const cover = Photos.cover
+
+  if (isEmpty(cover)) {
+    window.location.href = '/'
+    return null
+  }
 
   return (
     <div className={`cover overflow-x-hidden position-relative ${ANIMATED_PAGE_CLASS}`}>
