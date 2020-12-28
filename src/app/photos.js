@@ -1,42 +1,30 @@
 'use strict'
 
-import initEvent from 'src/lib/init-event'
-
 class Photos {
   constructor () {
-    this.config = {}
-    this.urls = {}
     this.position = 0
     this.photos = []
     this.cover = {}
+
+    this.config = {
+      presentation: {},
+      urls: {}
+    }
+    this.storage = window.sessionStorage
+
+    // this.loadConfiguration()
   }
 
   add (name, photoUrl) {
-    this.urls[name] = photoUrl
+    this.config.urls[name] = photoUrl
   }
 
   configure (presentation) {
-    this.photos = []
-
     if (presentation.photos.size < 0) {
       throw new Error('presentation.yml contains no photos!')
     }
 
-    const cover = presentation.cover || {}
-    cover.src = this.urls[cover.src] || cover.src
-    this.cover = cover
-
-    presentation.photos.forEach(foto => {
-      if (foto.visible) {
-        foto.src = this.urls[foto.src] || foto.src
-        this.photos.push(foto)
-      }
-    })
-
-    console.log('Photos: ', presentation.photos.length, ' Bilder gesamt')
-    console.log('Photos: ', this.photos.length, ' Bilder im Album')
-
-    initEvent('photos:start')
+    this.config.presentation = presentation
   }
 
   get (id) {
@@ -65,11 +53,47 @@ class Photos {
   }
 
   start () {
-    this.position = 0
+    this.photos = []
+    this.position = -1
+
+    const { presentation, urls } = this.config
+
+    const cover = presentation.cover || {}
+    cover.src = urls[cover.src] || cover.src
+    this.cover = cover
+
+    presentation.photos.forEach(foto => {
+      if (foto.visible) {
+        foto.src = urls[foto.src] || foto.src
+        this.photos.push(foto)
+      }
+    })
+
+    console.log('Photos: ', presentation.photos.length, ' Bilder gesamt')
+    console.log('Photos: ', this.photos.length, ' Bilder im Album')
+
+    // this.storeConfiguration()
   }
 
-  isReady () {
-    return this.photos > 0 && this.cover.src
+  loadConfiguration () {
+    const serializedConfiguration = this.storage.getItem('Photos')
+
+    if (serializedConfiguration) {
+      console.log('Photos: loading configuration from session storage')
+      try {
+        this.config = JSON.parse(serializedConfiguration)
+        this.start()
+      } catch (e) {
+        console.log('Photos: loading configuration failed')
+        console.log(e)
+      }
+    }
+  }
+
+  storeConfiguration () {
+    console.log('Photos: storing configuration in session storage')
+    const serializedConfiguration = JSON.stringify(this.config)
+    this.storage.setItem('Photos', serializedConfiguration)
   }
 }
 
