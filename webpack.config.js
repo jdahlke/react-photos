@@ -31,6 +31,9 @@ module.exports = (env, { mode }) => {
         },
         {
           test: /\.(ico|jpg|png|eot|svg|ttf|woff|woff2|gif)$/,
+          exclude: [
+            path.resolve(__dirname, 'photos')
+          ],
           use: [
             {
               loader: 'file-loader',
