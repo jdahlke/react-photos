@@ -1,9 +1,15 @@
 'use strict'
 
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 
-import { reducers } from './reducers'
+import { photoReducer } from 'src/pages/photo/store'
 
-const store = createStore(reducers)
+console.log(photoReducer)
+
+const store = createStore(
+  combineReducers({
+    photo: photoReducer
+  })
+)
 
 export default store
