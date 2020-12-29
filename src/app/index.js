@@ -7,7 +7,7 @@ import Routes from './routes'
 import ErrorBoundary from 'src/components/error-boundary'
 
 export const App = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL || '/'} >
     <ErrorBoundary>
       <Routes />
     </ErrorBoundary>

@@ -2,6 +2,7 @@
 
 const path = require('path')
 
+const { EnvironmentPlugin } = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
@@ -10,13 +11,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = (env, { mode }) => {
   const isProduction = mode === 'production'
   const assetName = `assets/[name]${isProduction ? '.[contenthash]' : ''}`
+  const basename = process.env.PUBLIC_URL || ''
 
   return {
     entry: './src/index.js',
     output: {
       filename: 'index.js',
       path: path.resolve(__dirname, 'dist'),
-      publicPath: '/'
+      publicPath: ''
     },
     module: {
       rules: [
@@ -68,6 +70,7 @@ module.exports = (env, { mode }) => {
       new HtmlWebPackPlugin({
         template: './public/index.html',
         filename: './index.html',
+        base: `${basename}/}`,
         minify: {
           collapseWhitespace: true
         }
@@ -75,6 +78,9 @@ module.exports = (env, { mode }) => {
       new CompressionPlugin({
         test: /\.(js|css|html)$/,
         cache: true
+      }),
+      new EnvironmentPlugin({
+        DEBUG: false
       })
     ],
     resolve: {

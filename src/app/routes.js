@@ -81,7 +81,7 @@ class Routes extends Component {
             <Route exact path='/' render={() => <HomePage />} />
             <Route exact path='/cover' render={() => <CoverPage />} />
             <Route exact path='/photos/:id' render={LazyLoadHOC(PhotoPage)} />
-            <Redirect to='/not-found' />
+            <Redirect to='/' />
           </Switch>
         </CSSTransition>
       </TransitionGroup>
